@@ -1,0 +1,758 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Color Palette */
+/* Rosy Brown #eec7b5 */
+/* Cadet Blue #fafafa */
+/* Dark Slate Gray #5a5a5a */
+/* Light Steel Blue #e5e5e5 */
+/* Slate Gray #292929 */
+
+/*------------------------------------------------------------------
+    [Table of contents]
+
+    1. Backdrop & Modal 
+    2. Navbar Section
+    3. Hero image Section
+    4. Image Grid Section
+    5. Collection Section
+    6. Style Secture
+    7. Testimonials Section
+    8. Footer Section
+
+    -------------------------------------------------------------------*/
+
+
+/* 0. GENERAL STYLES */
+body {
+  font-family: 'Overpass', sans-serif;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+}
+
+h6 {
+  font-size: 1.0rem;
+}
+
+footer {
+  background-color: #292929;
+  color: #fff;
+  padding: 4rem 0;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.hidden {
+  position: absolute;
+  left: -10000px;
+  color: black;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* 1. Backdrop & Modal */
+.backdrop {
+  display: none;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+}
+
+.modal {
+  border: 1px solid #eec7b5; 
+  display: none;
+  position: fixed;
+  top: 20%;
+  background: #fff;
+  padding: 1rem;
+  width: 280px;
+  /* padding: 2.5rem;  */
+  left: calc(50% - 140px);
+  z-index: 200;
+}
+
+@media (min-width: 680px) {
+  .modal {
+    width: 360px;
+    top: 20%;
+    left: 30%;
+    width: 40%;
+  }
+}
+
+.modal-title,
+.modal-subtitle {
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 2.2rem;
+}
+
+.modal-actions {
+  text-align: center;
+}
+
+.modal-action {
+  border: 1px solid #eec7b5;
+  background: #eec7b5;
+  text-decoration: none;
+  color: #000;
+  font: inherit;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.modal-action:hover,
+.modal-action:active {
+  /* background: #5a5a5a;
+  border-color: #5a5a5a; */
+  font-size: 115%;
+}
+
+.modal-action-negative {
+  background: #e5e5e5;
+  border-color: #e5e5e5;
+}
+
+.modal-action-negative:hover,
+.modal-action-negative:active {
+  background: #5a5a5a;
+  border-color: #5a5a5a;
+  color: #fff;
+}
+
+/* 2a. Navbar Section - Main */
+.main-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #e5e5e5;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  /* display: flex; */
+  z-index: 20;
+}
+
+.main-header > div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.toggle-button {
+  width: 3rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button-bar {
+  width: 100%;
+  height: 0.2rem;
+  background: black;
+  display: block;
+  margin: 0.6rem 0;
+}
+
+.main-header-brand {
+  color: #292929;
+  text-decoration: none;
+  font-weight: 700;
+  height: 3rem;
+  /* width: 20px; */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* The following code block tricks the CSS so that we can center the brand logo vertically. */
+.main-header-brand:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+/* End of "trick" code block */
+
+.main-header-brand span {
+  /* width: 100%; */
+  font-family: 'Bilbo Swash Caps', cursive;
+  /* font-size: 2rem; */
+  /* display: inline-block; */
+  height: 100%;
+  letter-spacing: 4px;
+  /* vertical-align: middle; */
+}
+
+.main-nav {
+  display: none;
+  text-align: right;
+  width: calc(100% - 122px);
+  vertical-align: middle;
+}
+
+.main-nav-items {
+  margin: 0;
+  padding: 0;        /* This also has the effect of removing bullet points */
+  list-style: none;  /* removes bullet points */
+}
+
+.main-nav-item {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.main-nav-item-link,
+.mobile-nav-item-link { 
+color: #292929; 
+font-weight: 700; 
+/* letter-spacing: 2px;  */
+text-decoration: none; 
+/* background: #e5e5e5;  */
+padding: 0.2rem 0; 
+
+}
+
+@media (min-width: 42rem) {
+  .toggle-button {
+    display: none;
+  }
+
+  .main-nav {
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 44px);
+    vertical-align: middle;
+  }
+}
+
+.main-nav-item-link:hover,
+.main-nav-item-link:active { 
+  /* color: #e5e5e5; */
+  /* background: #292929; */
+  border-bottom: 2px solid #292929;
+  font-size: 115%;
+  /* opacity: 0.75;  */
+}
+
+/* 2b. Navbar Section - Mobile */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  line-height: 2;
+  background: #eec7b5;
+  width: 80%;
+  height: 100vh;
+}
+
+.mobile-nav-items {
+  width: 90%;
+  height: 100%;
+  list-style: none;
+  margin: 10% auto;
+  padding: 0;
+  text-align: center;
+}
+
+.mobile-nav-item {
+  margin: 1rem 0;
+}
+
+.mobile-nav-item-link {
+  font-size: 1.5rem;
+}
+
+.mobile-nav-item-link:hover,
+.mobile-nav-item-link:active { 
+  /* color: #e5e5e5; */
+  /* background: #292929; */
+  border-bottom: 2px solid #292929;
+  font-size: 1.73rem;
+  /* opacity: 0.75;  */
+}
+
+/* The hide-nav class will be added when the mobile nav is clicked */
+.hide-nav {
+  display: none;
+}
+
+/* 3. Hero image */
+
+.hero-section {
+  position: relative;
+  max-height: 75vh;
+  margin-top: 4rem;
+}
+
+.hero-image-container {
+  /* position: relative; */
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+.hero-image {
+  width: 100vw;
+  /* width: 100%; */
+  max-height: 75vh;
+  object-fit: cover;
+  object-position: top;
+}
+.hero-overlay {
+  background-color: #000;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  position: absolute;
+}
+
+.hero-text-container {
+  z-index: 15;
+  color: #fff;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  text-align: center;
+  line-height: 1.5;
+  /* position: flex; */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-text {
+  color: #fff;
+  margin: 0 auto;
+}
+
+p.hero-text {
+  padding-top: 20px;
+}
+
+/* 4. Image Grid Section*/
+
+.image-grid-container {
+  padding-bottom: 200px;
+  text-align: center;
+}
+
+.image-grid-container p {
+  padding: 4rem 0 6rem 0;
+  font-weight: 400;
+  font-size: 2.6rem;
+}
+
+.image-grid-wrapper {
+  display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* grid-template-rows: repeat(auto-fit, minmax(320px, 1fr)); */
+  grid-gap: 3rem;
+  margin: 0 auto;
+  max-width: 1060px;
+}
+
+.image-wrapper {
+  /* max-height: 400px; */
+  overflow: hidden;
+  position: relative;
+}
+
+.grid-image {
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;
+}
+
+.grid-image-7 {
+  object-position: -25% -25%;
+  /* object-fit: contain; */
+}
+
+
+
+
+/* 5. Collection Section*/
+.collection-container {
+  background-color: #e5e5e5;
+  padding: 200px 0;
+  text-align: center;
+  letter-spacing: 5px;
+  line-height: 50px;
+}
+
+.collection-container article {
+  padding: 100px 20px;
+}
+
+.collection-text {
+  font-size: 2.2rem;
+}
+
+.button-collection {
+  background-color: #eec7b5;
+  padding: 2rem 3rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.button-collection:hover,
+.button-collection:active {
+  font-size: 2.2rem;
+  text-decoration: underline;
+}
+
+/* 6. Style Section*/
+
+.style-heading {
+  padding: 4rem 30px; 
+  font-size: 2.6rem;
+  text-align: center; 
+  padding: 20px; 
+}
+
+.blog-block {  
+  flex-direction: row;  
+  flex-wrap: wrap; 
+  display: flex;
+  justify-content: center;
+  align-content: center; 
+  align-items: center;  
+  box-sizing: border-box; 
+  margin: 0;  
+  padding: 0;  
+}
+
+.blog-image img {
+  flex: 1 0 0; 
+  min-width: 320px; 
+  max-width: 100vw; 
+  object-fit: cover;
+  box-sizing: border-box; 
+  margin:0;
+  padding: 0; 
+  display: block; 
+}
+      
+.blog-text-container {
+  flex: 1 0 0;  
+  min-width: 320px; 
+  max-width: 50wv; 
+  overflow-wrap: break-word; 
+  text-align: center; 
+  background-color: #fff;     
+  box-sizing: border-box;  
+  padding-left: 3rem;
+  padding-right: 3rem;  
+  padding-bottom: 3rem; 
+}
+
+
+.btn-blog {
+  background-color:  #eec7b5; 
+  color: #292929; 
+  border: none;
+  font-weight: bold;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 16px; */
+  margin: 20px; 
+}
+
+.btn-blog:hover,
+.btn-blog:active {
+  font-size: 115%;
+  text-decoration: underline;
+}
+
+.style-text, .blog-text {
+  padding: 10px 2.5rem; 
+  font-size: 1.8rem;
+}
+
+@media (min-width: 1040px) {
+ .blog-image img {
+   width: 50vw; 
+ }
+}
+
+/* 7. Testimonials Section*/
+
+
+.testimonials-section {
+  background-color: #eec7b5;
+  color: #292929; 
+  font-weight: 400;
+  padding: 7rem 3rem;
+}
+
+.testimonials-heading {
+  font-size: 2.6rem;
+}
+
+.testimonials-section p {
+    text-align: center; 
+    padding-bottom: 5rem; 
+}
+
+.testimonials-section span {
+  text-align: right; 
+  font-weight: bold; 
+}
+
+.testimonials-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.testimonial {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid #e5e5e5;
+  box-shadow: 2px 3px #5a5a5a; 
+  padding: 2rem;
+  justify-content: center;
+  max-width: 300px;
+  background-color: #fff;
+}
+
+.testimonial p {
+  padding-top: 2rem; 
+  padding-right: 1rem; 
+  padding-left: 1rem; 
+  text-align: left; 
+}
+
+.review p {
+  text-indent: 20px; 
+}
+
+.testimonial-image-wrapper {
+  /* max-width: 175px; */
+  align-self: center;
+}
+
+.testimonial-image-wrapper img {
+  /* align-self: center; */
+  max-width: 150px;
+  border-radius: 50%;
+}
+
+/* 8. Get In Touch Section */
+/* .get-in-touch-container {
+  background-color: #fff;
+  padding: 200px 50px;
+} */
+
+.contact {
+  background-color: #fff;
+  padding: 7rem 3rem; 
+}
+
+.contact p {
+    text-align: center; 
+    padding-bottom: 5rem; 
+    font-size: 2.6rem;
+}
+
+.form {
+    font-family: "Overpass", sans-serif;  
+}
+.form-style-1 {
+	margin:10px auto;
+	max-width: 400px;
+	padding: 20px 12px 10px 20px;
+	font: 16px "Overpass", sans-serif;
+}
+.form-style-1 li {
+	padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+}
+.form-style-1 label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+.form-style-1 input[type=text], 
+.form-style-1 input[type=date],
+.form-style-1 input[type=datetime],
+.form-style-1 input[type=number],
+.form-style-1 input[type=search],
+.form-style-1 input[type=time],
+.form-style-1 input[type=url],
+.form-style-1 input[type=email],
+textarea, 
+select{
+	box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	outline: none;	
+}
+.form-style-1 input[type=text]:focus, 
+.form-style-1 input[type=date]:focus,
+.form-style-1 input[type=datetime]:focus,
+.form-style-1 input[type=number]:focus,
+.form-style-1 input[type=search]:focus,
+.form-style-1 input[type=time]:focus,
+.form-style-1 input[type=url]:focus,
+.form-style-1 input[type=email]:focus,
+.form-style-1 textarea:focus, 
+.form-style-1 select:focus{
+	border: 1px solid #eec7b5;
+}
+.form-style-1 .field-divided{
+	width: 49%;
+}
+
+.form-style-1 .field-long{
+	width: 100%;
+}
+.form-style-1 .field-select{
+	width: 100%;
+}
+.form-style-1 .field-textarea{
+	height: 100px;
+}
+.form-style-1 input[type=submit], .form-style-1 input[type=button]{
+	background: #eec7b5;
+	padding: 8px 15px 8px 15px;
+	border: none;
+  color: #292929;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.form-style-1 input[type=submit]:hover, 
+.form-style-1 input[type=button]:hover,
+.form-style-1 input[type=submit]:active, 
+.form-style-1 input[type=button]:active{
+	background: #eec7b5;
+  box-shadow:none;
+  font-size: 1.35rem;
+  text-decoration: underline;
+}
+.form-style-1 .required{
+	color: #eec7b5; 
+}
+
+.subject span {
+    color:  #e5e5e5; 
+}
+
+/* 9. Footer Section*/
+
+.footer {
+  width: 100%; 
+  height: 100%;
+}
+
+.footer-icons {
+  display: block;
+  text-align: center;
+  font-size: 2rem; 
+  padding-bottom: 20px;
+}
+
+.footer-icon-li { /* previously .footer-social-media li */
+  display: inline-block;
+  width: 3rem;
+  padding: .5rem;
+  color: #eec7b5;
+}
+
+.footer-icon-li a {
+  text-decoration: none; 
+  color: #eec7b5;
+}
+
+.footer-icon {
+  cursor: pointer;
+}
+  
+.footer-icon-link {
+  color: #fff; 
+  text-decoration: none; 
+}
+
+.footer-link-li a {
+  color: #fff; 
+  text-decoration: none; 
+}
+
+.footer-icon-link:hover,
+.footer-icon-link:active {
+  font-size: 115%;
+}
+
+.footer-link-li:hover {
+  /* background-color: #5a5a5a; */
+  font-size: 115%;
+}
+
+.footer-row {
+  display: flex; 
+  flex-direction: column-reverse;  
+   align-items: center; 
+  justify-content: center; 
+  text-align: center;   
+  min-width: 320px;  
+}
+
+@media (min-width: 1041px) {
+  .footer-row {
+    /* width: 360px; */
+    flex-direction: row;
+  }
+}
+
+.footer-column {
+  flex: 33.33%;  
+  min-width: 320px;
+  padding: 20px;
+}
+
+.phone a {
+  text-decoration: none; 
+  color: #fff; 
+}
